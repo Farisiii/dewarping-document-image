@@ -3,9 +3,11 @@
 The code for "D2Dewarp: Dual Dimensions Geometric Representation Learning Based Document Image Dewarping", CVPR 2026.
 
 <div align=center>
-<img width="650" height="350" src="https://github.com/xiaomore/D2Dewarp/blob/main/images/model1.png" alt="Model Overview"/>
-<img width="450" height="350" src="https://github.com/xiaomore/D2Dewarp/blob/main/images/model2.png" alt="HV Fusion Module"/>
+<img width="650" height="350" src="https://github.com/xiaomore/D2Dewarp/blob/main/images/model1.png" alt="Model Overview"/></div><br>
+<div align=center>
+<img width="450" height="340" src="https://github.com/xiaomore/D2Dewarp/blob/main/images/model2.png" alt="HV Fusion Module"/><br>
 </div>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">HV Fusion Module</center>
 
 #### Training Dataset
 We propose a training set of distorted images with horizontal and vertical line annotations. 
