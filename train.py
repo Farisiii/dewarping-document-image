@@ -74,7 +74,7 @@ def get_args():
     parser.add_argument('--batch_size', type=int, default=8, help='batch size')
 
     parser.add_argument('--exp_name', default='dewarp_HV_100K', help='Where to store logs and models')
-    parser.add_argument('--data_path', default='/mnt/data2/lh/dataset/dewarp/dewarp_Horizontal_Vertical',
+    parser.add_argument('--data_path', default='/dataset/dewarp/dewarp_Horizontal_Vertical',
                         help='dataset path')
 
     parser.add_argument('--pre_trained_path', default=None,
