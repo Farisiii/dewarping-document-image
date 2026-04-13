@@ -14,7 +14,7 @@ from skimage import measure
 
 from loader.dataset_doc3d_grid_HV import gradient
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 import torch
 import torch.nn.functional as F
 from networks.d2dewarp_model import D2DewarpModel
