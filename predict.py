@@ -132,24 +132,20 @@ if __name__ == '__main__':
     img_path = parser.img_path
     save_path = parser.save_path
     total_time = 0.0
-
-    start = time.time()
     img_num = 0.0
-    
-    VALID_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')
 
-    for file in glob.glob(img_path + "/*"):
+    # Handle single file atau folder
+    if os.path.isfile(img_path):
+        image_files = [img_path]
+    else:
+        image_files = []
+        for ext in ('*.jpg', '*.jpeg', '*.png', '*.JPG', '*.JPEG', '*.PNG'):
+            image_files.extend(glob.glob(os.path.join(img_path, ext)))
+
+    print(f"Ditemukan {len(image_files)} gambar")
+
+    for file in image_files:
         print("file: ", file)
-
-        # Skip jika bukan file atau bukan format gambar
-        if not os.path.isfile(file):
-            print(f"Skipping (bukan file): {file}")
-            continue
-        
-        if not file.lower().endswith(VALID_EXTENSIONS):
-            print(f"Skipping (bukan gambar): {file}")
-            continue
-
         basename = os.path.basename(file)
         name, _ = os.path.splitext(basename)
         filename = os.path.join(save_path, name + ".png")
@@ -157,6 +153,8 @@ if __name__ == '__main__':
         total_time += predict(file, save_path, filename)
         print("total_time: ", total_time)
         img_num += 1
-        
-    print('FPS: %.1f' % (1.0 / (total_time / img_num)))
 
+    if img_num > 0:
+        print('FPS: %.1f' % (1.0 / (total_time / img_num)))
+    else:
+        print("Tidak ada gambar yang diproses.")
