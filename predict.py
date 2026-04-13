@@ -135,13 +135,28 @@ if __name__ == '__main__':
 
     start = time.time()
     img_num = 0.0
+    
+    VALID_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')
 
     for file in glob.glob(img_path + "/*"):
         print("file: ", file)
-        filename = (save_path + "/" + file[file.rindex("/") + 1:file.rindex(".")] + ".png")
+
+        # Skip jika bukan file atau bukan format gambar
+        if not os.path.isfile(file):
+            print(f"Skipping (bukan file): {file}")
+            continue
+        
+        if not file.lower().endswith(VALID_EXTENSIONS):
+            print(f"Skipping (bukan gambar): {file}")
+            continue
+
+        basename = os.path.basename(file)
+        name, _ = os.path.splitext(basename)
+        filename = os.path.join(save_path, name + ".png")
 
         total_time += predict(file, save_path, filename)
         print("total_time: ", total_time)
         img_num += 1
+        
     print('FPS: %.1f' % (1.0 / (total_time / img_num)))
 
