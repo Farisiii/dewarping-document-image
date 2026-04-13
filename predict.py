@@ -57,7 +57,7 @@ recti_model = D2DewarpModel(img_size=parser.input_size, in_chans=parser.in_chans
                             d_model=parser.d_model)
 
 recti_model = torch.nn.DataParallel(recti_model).cuda()
-state_dict = torch.load(parser.model_path)
+state_dict = torch.load(parser.model_path, weights_only=False)
 recti_model.load_state_dict(state_dict['state_dict'])
 print(f'model loaded')
 
